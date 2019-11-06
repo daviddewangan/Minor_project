@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1 style="font-weight: bold;">{% block title %} {{ choice.title }} {% endblock title %}</h1>
+        <p class="badge badge-danger">{{ choice.user }}</p> | <p class="badge badge-warning">{{ choice.category }}</p>| {{ choice.pub_date }}
+        <p class="card-text ">{{ choice.choice_text | safe }}</p>
+        <a href="{{ choice.url }}">{{ choice.url }}</a>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock content %}

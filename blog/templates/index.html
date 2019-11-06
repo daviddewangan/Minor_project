@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+  
+<h1>Categories</h1>
+<div class="row">
+
+{% for question in latest_question_list %}
+
+
+<div class="col-md-4">
+<div class="card mb-2">
+<a href="{{ question.id }}" class="btn btn-primary">
+<div class="card-body">
+<h5 class="card-title">{{ question.question_text }}</h5>
+
+
+</div>
+</a>
+</div>
+
+</div>
+
+    
+  
+{% endfor %}
+
+
+</div>
+
+
+
+
+{% endblock %}

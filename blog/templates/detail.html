@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+    
+    .head_text {
+        color: white;
+    }
+    
+    .card {
+        box-shadow: 0 ;
+    }
+</style>
+
+
+
+<div class="container">
+<h4><small>RECENT POST</small></h4>
+
+<div class="card-sm-6">
+<h5 class="badge badge-primary">{{ question.question_text }}</h5>
+</div>
+
+
+
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+<h2>{{choice.title}}</h2>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% for choice in question.choice_set.all %}
+
+<div class="card mb-4">
+<div class="card-body">
+<h2 class="card-title" style="font-weight: bold;">{{choice.title}}</h2>
+
+                <h5><span style="margin-right: 10px;"class="badge badge-danger">{{ choice.user }}</span></h5>
+<h5><span class="glyphicon glyphicon-time"></span>{{ choice.pub_date }}</h5>
+<p class="card-text">{{ choice.choice_text|slice:":200" }}</p>
+<a class="badge badge-info" href="{% url 'post_detail' choice.pk %}">Read More &rarr;</a>
+</div>
+</div>
+
+{% endfor %}
+</div>
+
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+</div>
+</div>
+
+{% if is_paginated %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+    {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+
+{% endblock %}

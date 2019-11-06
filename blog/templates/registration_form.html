@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<style>
+#hint_id_username {
+ color: red;
+}
+</style>
+<div class="row">
+	<div class="col-sm-6 offset-sm-3 mybox p-4">
+		<h1>Register Now</h1>
+		<hr>
+		<form enctype="multipart/form-data" method="post">
+		{% csrf_token %}
+		{{ form|crispy }}<br>
+		<input class="btn btn-primary" type="submit" value="Register"/>
+		</form>	
+	</div>
+</div>
+{% endblock %}

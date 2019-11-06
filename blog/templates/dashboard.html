@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h3>Control Panel</h3>
+<hr>
+
+    
+    
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<h5>
+    <i class='fas fa-user-circle' style='font-size:25px'>{{request.user.username}}</i><a style="margin-left: 20px;"class="btn btn-outline-danger" href="/accounts/logout"><i class='fas fa-power-off' style='font-size:24px;'></i></a>
+    <a style="margin-left: 20px;"class= "btn btn-outline-primary" href = "{% url 'form' %}"><i class='fas fa-blog' style='font-size:24px'></i></a>	
+</h5>
+<hr>
+
+
+<hr>
+{% if choices %}
+
+<h5>Feeds</h5>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">title</th>
+            <th scope="col">Published date</th>
+            <th scope="col">url</th>
+            <th scope="col">Go</th>
+            
+          </tr>
+        </thead>
+        
+          {% for choice in choices %}
+          <tr>
+            <th scope="row">{{choice.id}}</th>
+            <td>{{choice.title|slice:":10"}}</td>
+            <td>{{choice.pub_date}}</td>
+            <td><a href="{{choice.url}}">{{choice.url|slice:":10"}}</a></td>
+            <td>{{choice.question}}</th>
+            <td><a class="btn btn-outline-success" href="{% url 'post_detail' choice.pk %}"> &rarr;</a></td>
+            
+              
+          </tr>
+          
+          
+      {% endfor %}
+      
+          
+       
+      </table>
+      
+{% else %}
+
+<div class = "alert alert-danger">
+    You dont have any Blogs yet!..
+
+</div>
+{% endif %}
+
+
+
+{% endblock %}
