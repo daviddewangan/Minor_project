@@ -128,8 +128,8 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS=3
 
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER= 'dhokha53@gmail.com'
-EMAIL_HOST_PASSWORD= 'server@123'
+EMAIL_HOST_USER= 'your_gmail_id'
+EMAIL_HOST_PASSWORD= 'Your_Password'
 EMAIL_PORT= 587
 EMAIL_USE_TLS= True
 
